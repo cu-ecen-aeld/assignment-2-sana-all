@@ -1,0 +1,8 @@
+Version Information:
+<output from aarch64-none-linux-gnu-gcc -v>
+
+Configuration Details:
+<additional configuration output>
+
+Sysroot Path:
+<output from aarch64-none-linux-gnu-gcc --print-sysroot>
