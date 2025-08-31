@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <syslog.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 
 int main(int argc, char *argv[]){
@@ -29,7 +31,7 @@ int main(int argc, char *argv[]){
 	const char *writefile = argv[1];
 	const char *writestr = argv[2];
 
-	fd = open(writefile, O_WRONLY, 0644); //should be O_WRONLY | O_CREAT
+	int fd = open(writefile, O_WRONLY, 0644); //should be O_WRONLY | O_CREAT
 	// but guaranteed there is a file.
 	// if( fd < 0 ) // we also dont do this because it is guaranteed
 
