@@ -25,18 +25,24 @@ int main(int argc, char *argv[]){
 	if (argc > 3){
 		syslog(LOG_ERR, "unexpected error occured, 3 or more aguments");
 		closelog();
+		return 1;
 	}
 
 
 	const char *writefile = argv[1];
 	const char *writestr = argv[2];
 
-	int fd = open(writefile, O_WRONLY, 0644); //should be O_WRONLY | O_CREAT
-	// but guaranteed there is a file.
-	// if( fd < 0 ) // we also dont do this because it is guaranteed
+	int fd = open(writefile, O_WRONLY | O_CREAT, 0644);
+	if( fd < 0 )
+	{
+		syslog(LOG_ERR, "Failed to open file this is line 38 shoo %s: %s", writefile, strerror(errno));
+	    closelog();
+	    return 1;
+	}
 
-	syslog(LOG_DEBUG, writestr, writefile);
-
+	//syslog(LOG_DEBUG, writestr, writefile);
+	write(fd,writestr,strlen(writestr));
+	syslog(LOG_DEBUG, "Writing %s to %s", writestr, writefile);
 	close(fd);
 	closelog();
 

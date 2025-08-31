@@ -45,6 +45,7 @@ then
 	then
 		echo "$WRITEDIR created"
 	else
+		echo "Failed to create directory: $WRITEDIR"
 		exit 1
 	fi
 fi
@@ -53,12 +54,18 @@ make clean
 make
 
 for i in $( seq 1 $NUMFILES)
-do
+do	
+	echo "RARATINA $WRITESTR $username $WRITEDIR"
 	./writer "$WRITEDIR/${username}$i.txt" "$WRITESTR"
+	ls $WRITEDIR
+	#echo $?
 done
 
+#cat "$WRITEDIR/sana-all1.txt"
+echo "$WRITEDIR $WRITESTR asdasdads"
+#wc -m < /tmp/aeld-data/sana-all1.txt
 OUTPUTSTRING=$(./finder.sh "$WRITEDIR" "$WRITESTR")
-
+echo "BANANA $OUTPUTSTRING NANABA $MATCHSTR"
 # remove temporary directories
 rm -rf /tmp/aeld-data
 
@@ -68,6 +75,8 @@ if [ $? -eq 0 ]; then
 	echo "success"
 	exit 0
 else
+	echo "funny0 ${MATCHSTR}"
+	echo "funny1 ${OUTPUTSTRING}"
 	echo "failed: expected  ${MATCHSTR} in ${OUTPUTSTRING} but instead found"
 	exit 1
 fi
