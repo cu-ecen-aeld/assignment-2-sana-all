@@ -1,8 +1,3 @@
-Version Information:
-<output from aarch64-none-linux-gnu-gcc -v>
-
-Configuration Details:
-<additional configuration output>
-
-Sysroot Path:
-<output from aarch64-none-linux-gnu-gcc --print-sysroot>
+Using built-in specs.
+COLLECT_GCC=aarch64-none-linux-gnu-gcc
+COLLECT_LTO_WRAPPER=/home/admin/EducationMSEE/Linux_System_Programming_and_Introduction_to_Buildroot/assignments/assign-2-again/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin/../libexec/gcc/aarch64-none-linux-gnu/13.3.1/lto-wrapper
